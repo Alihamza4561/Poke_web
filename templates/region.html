@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ region_name }} Database</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f7f9fc; padding: 20px; text-align: center; margin: 0; }
+        .search-bar { margin: 20px 0 40px; }
+        input { padding: 12px; width: 300px; border-radius: 20px; border: 2px solid #ccc; font-size: 16px; outline: none; }
+        input:focus { border-color: #3b4cca; }
+        button { padding: 12px 25px; background: #3b4cca; color: white; border: none; border-radius: 20px; cursor: pointer; font-weight: bold; margin-left: 8px; }
+        button:hover { background: #ffcb05; color: #1d2d5b; }
+        .grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1200px; margin: 0 auto; }
+        .card { background: white; width: 180px; padding: 15px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-decoration: none; color: #333; transition: 0.2s; border: 1px solid #e1e8ed; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.12); border-color: #3b4cca; }
+        .card img { width: 120px; height: 120px; object-fit: contain; }
+        .card h3 { margin: 10px 0 0; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>{{ region_name }} Region Catalogue</h1>
+    <a href="/" style="text-decoration: none; color: #888; font-weight: bold;">⬅️ Back to Main Regions</a>
+
+    <div class="search-bar">
+        <form method="POST">
+            <input type="text" name="pokemon_name" placeholder="Quick search any Pokémon globally..." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="grid">
+        {% for p in pokemon_list %}
+            <a class="card" href="/pokemon/{{ p.id }}">
+                <img src="{{ p.image }}" 
+                     alt="{{ p.name }}" 
+                     onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ p.id }}.png';">
+                <h3>{{ p.name }}</h3>
+                <span style="color: #aaa; font-size: 12px;">#{{ p.id }}</span>
+            </a>
+        {% endfor %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+scikit_learn_data/
+*.csv
+*.pkl
+.DS_Store
+.env

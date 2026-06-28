@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratory Laboratory Matrix</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; padding: 40px; margin: 0; text-align: center; }
+        .form-panel { background: white; max-width: 500px; margin: 0 auto; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #e1e8ed; text-align: left; }
+        label { font-weight: bold; color: #1d2d5b; display: block; margin-top: 15px; font-size: 14px; }
+        input, select, textarea { width: 100%; padding: 12px; margin-top: 5px; border-radius: 8px; border: 1px solid #ccc; box-sizing: border-box; font-size: 14px; }
+        textarea { height: 70px; resize: none; }
+        .submit-btn { width: 100%; padding: 14px; background: #4caf50; color: white; border: none; font-weight: bold; font-size: 16px; border-radius: 8px; cursor: pointer; margin-top: 25px; transition: 0.2s; }
+        .submit-btn:hover { background: #45a049; }
+        .back-link { display: inline-block; margin-bottom: 20px; text-decoration: none; color: #888; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <a href="/" class="back-link">⬅️ Abort and Return Home</a>
+
+    <div class="form-panel">
+        <h2 style="margin-top:0; color:#1d2d5b; border-bottom: 2px solid #f0f4f8; padding-bottom: 10px;">🧪 Synthesize Monster</h2>
+        <form method="POST">
+            <label>Monster Name</label>
+            <input type="text" name="monster_name" placeholder="e.g., Volcanix" required>
+            
+            <label>Custom Image URL Link (Optional)</label>
+            <input type="url" name="monster_image" placeholder="Paste link (e.g., https://site.com/art.jpg)">
+
+            <label>Elemental Type Bind</label>
+            <select name="primary_type">
+                <option value="Fire">Fire</option> <option value="Water">Water</option>
+                <option value="Grass">Grass</option> <option value="Electric">Electric</option>
+                <option value="Dragon">Dragon</option> <option value="Shadow">Shadow</option>
+            </select>
+
+            <label>Ability Name</label>
+            <input type="text" name="ability_name" placeholder="e.g., Core Flare" required>
+
+            <label>Ability Description</label>
+            <textarea name="ability_desc" placeholder="Explain what happens when this trait awakens..." required></textarea>
+
+            <div style="display:flex; gap:15px;">
+                <div style="flex: 1;">
+                    <label>Combat HP</label>
+                    <input type="number" name="hp" min="10" max="250" value="80">
+                </div>
+                <div style="flex: 1;">
+                    <label>Attack ATK</label>
+                    <input type="number" name="attack" min="10" max="250" value="85">
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">💥 Initialize Synthesis</button>
+        </form>
+    </div>
+
+</body>
+</html>

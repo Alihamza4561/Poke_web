@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Laboratory Vault Manifest</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f7f9fc; padding: 40px; text-align: center; margin: 0; }
+        h1 { color: #3b4cca; margin-bottom: 5px; }
+        .grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1200px; margin: 30px auto 0; }
+        .monster-card { background: white; width: 200px; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-decoration: none; color: #333; border: 1px solid #e1e8ed; transition: 0.2s; text-align: center; }
+        .monster-card:hover { transform: translateY(-5px); border-color: #3b4cca; box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+        .monster-card img { width: 140px; height: 140px; object-fit: cover; border-radius: 50%; border: 3px solid #3b4cca; }
+        .back-link { display: inline-block; text-decoration: none; color: #888; font-weight: bold; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>🏛️ Laboratory Custom Archive Vault</h1>
+    <a href="/" class="back-link">⬅️ Back to Grand Main Portal Directory</a>
+
+    <div class="grid">
+        {% if not custom_monsters %}
+            <div style="padding: 40px; color: #aaa; font-style: italic; width: 100%;">
+                <h3>No custom entries found stored inside the MySQL schema.</h3>
+                <a href="/create" style="color: #4caf50; font-weight: bold; text-decoration: none;">Click here to synthesize your first monster anomaly!</a>
+            </div>
+        {% endif %}
+        
+        {% for monster in custom_monsters %}
+            <a class="monster-card" href="/pokemon/{{ monster.id }}">
+                <img src="{{ monster.image }}" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=150';">
+                <h3 style="margin: 15px 0 2px; font-size: 18px; color: #1d2d5b;">{{ monster.name }}</h3>
+                <span style="color: #3b4cca; font-weight: bold; font-size: 13px;">Manifest #{{ monster.id }}</span>
+            </a>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

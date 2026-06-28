@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Establish Identity Matrix</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; padding: 100px; text-align: center; margin: 0; }
+        .card { background: white; max-width: 380px; margin: 0 auto; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: left; }
+        input { width: 100%; padding: 10px; margin: 10px 0 20px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #4caf50; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        
+        .flash-msg { 
+            background: #ffeaa7; 
+            color: #d63031; 
+            padding: 12px; 
+            border-radius: 5px; 
+            margin-bottom: 20px; 
+            font-weight: bold; 
+            list-style: none; 
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2 style="margin-top:0; color:#1d2d5b;">Create Account</h2>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for msg in messages %}
+                    <div class="flash-msg">{{ msg }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <label>Username</label> <input type="text" name="username" required>
+            <label>Password</label> <input type="password" name="password" required>
+            <button type="submit">Register Account</button>
+        </form>
+        <p style="font-size:13px; text-align:center; margin-top:20px; color:#666;">Already have an account? <a href="/login" style="color:#3b4cca; font-weight:bold; text-decoration: none;">Log in here</a></p>
+    </div>
+
+</body>
+</html>
