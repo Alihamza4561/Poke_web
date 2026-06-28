@@ -1,23 +1,23 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
 import requests
 import json
 import os
 from dotenv import load_dotenv
 
-
 load_dotenv()
 
 app = Flask(__name__)
 
-# ==========================================================================
-# 🎛️ SECURED DATABASE CONFIGURATION
-# ==========================================================================
 app.config['SECRET_KEY'] = 'super-secret-key-change-this-later'
 
-# 🔐 Reads the URL string dynamically, falling back to local database if missing
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+db_url = os.environ.get('DATABASE_URL')
+
+print(f"--- DEBUG: CONNECTING TO DATABASE URL: {db_url} ---")
+
+app.config['SQLALCHEMY_DATABASE_URI'] = db_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
