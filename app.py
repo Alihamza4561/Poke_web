@@ -4,9 +4,9 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 import requests
 import json
 import os
-from dotenv import load_dotenv # 💡 Make sure this says exactly load_dotenv
+from dotenv import load_dotenv
 
-# Load the keys out of the hidden environment variables
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -136,14 +136,12 @@ def register():
         username = request.form.get('username').strip()
         password = request.form.get('password')
         
-        # Check if username is already taken in MySQL
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             flash('Username already exists! Try a different one.')
             return redirect(url_for('register'))
             
-        # 🔥 ENCRYPT PASSWORD before storing it in MySQL
-        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+        hashed_password = generate_password_hash(password)
         
         new_user = User(username=username, password_hash=hashed_password)
         db.session.add(new_user)
