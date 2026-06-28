@@ -1,13 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
 import requests
 import json
 import os
-from dotenv import load_load_env # 🆕 Import the loader environment utility
+from dotenv import load_dotenv # 💡 Make sure this says exactly load_dotenv
 
-# Load the keys out of the hidden local .env file
+# Load the keys out of the hidden environment variables
 load_dotenv()
 
 app = Flask(__name__)
